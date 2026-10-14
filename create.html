@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Glamé — Create your look</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Syne:wght@400..800&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/tailwind.css"/>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+
+<!-- Slim wizard bar — replaces the normal site nav during the flow -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant">
+  <div class="h-20 max-w-3xl mx-auto px-margin-mobile flex flex-col items-center justify-center gap-space-xs">
+    <div class="w-full flex items-center justify-between">
+      <a class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors" href="home.html">✕ Exit</a>
+      <div class="flex items-center gap-1.5" aria-hidden="true">
+        <span class="w-6 h-1.5 rounded-full" data-segment="1"></span>
+        <span class="w-6 h-1.5 rounded-full" data-segment="2"></span>
+        <span class="w-6 h-1.5 rounded-full" data-segment="3"></span>
+        <span class="w-6 h-1.5 rounded-full" data-segment="4"></span>
+        <span class="w-6 h-1.5 rounded-full" data-segment="5"></span>
+        <span class="w-6 h-1.5 rounded-full" data-segment="6"></span>
+        <span class="w-6 h-1.5 rounded-full" data-segment="7"></span>
+        <span class="w-6 h-1.5 rounded-full" data-segment="8"></span>
+      </div>
+      <span class="w-[62px]"></span>
+    </div>
+    <span id="step-label" class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Step 1 of 8</span>
+  </div>
+</header>
+
+<main class="w-full pt-32 pb-space-4xl min-h-screen">
+  <div class="max-w-2xl mx-auto px-margin-mobile">
+
+    <!-- STEP 1 — Inspiration image -->
+    <section data-step="1" class="flex flex-col items-center text-center gap-space-lg">
+      <h1 class="font-display text-headline-lg text-on-surface">Show us a look you love.</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Upload a photo of any makeup look that inspires you — a photo you took, a screenshot, anything.</p>
+
+      <div id="inspo-zone" role="button" tabindex="0" aria-label="Upload inspiration photo" class="w-full border-2 border-dashed border-outline-variant rounded py-space-2xl flex flex-col items-center gap-space-sm cursor-pointer hover:border-primary-container focus:outline-none focus:border-primary-container transition-colors">
+        <span class="material-symbols-outlined text-3xl text-primary-container">add_photo_alternate</span>
+        <p class="font-body-md text-body-md text-on-surface-variant">Drag a photo here, or browse files</p>
+      </div>
+      <div id="inspo-preview" hidden class="w-full flex flex-col items-center gap-space-sm">
+        <div class="w-48 aspect-square rounded overflow-hidden bg-surface-container">
+          <img id="inspo-img" alt="Your uploaded inspiration photo" class="w-full h-full object-cover"/>
+        </div>
+        <button id="inspo-replace" type="button" class="font-label-sm text-label-sm uppercase tracking-wider text-primary hover:text-primary-container transition-colors">Replace</button>
+      </div>
+      <input id="inspo-input" type="file" accept="image/*" class="hidden"/>
+
+      <div class="w-full flex items-center justify-end pt-space-lg">
+        <button type="button" data-next class="inline-flex items-center justify-center h-[54px] px-space-2xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors">Continue</button>
+      </div>
+    </section>
+
+    <!-- STEP 2 — Your photo -->
+    <section data-step="2" hidden class="flex flex-col items-center text-center gap-space-lg">
+      <h1 class="font-display text-headline-lg text-on-surface">Now, a photo of you.</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant max-w-md">A clear photo of your face in natural light works best. This is used only to build your personal guide.</p>
+
+      <div id="photo-zone" role="button" tabindex="0" aria-label="Upload your photo" class="w-full border-2 border-dashed border-outline-variant rounded py-space-2xl flex flex-col items-center gap-space-sm cursor-pointer hover:border-primary-container focus:outline-none focus:border-primary-container transition-colors">
+        <span class="material-symbols-outlined text-3xl text-primary-container">add_a_photo</span>
+        <p class="font-body-md text-body-md text-on-surface-variant">Drag a photo here, or browse files</p>
+      </div>
+      <div id="photo-preview" hidden class="w-full flex flex-col items-center gap-space-sm">
+        <div class="w-48 aspect-square rounded overflow-hidden bg-surface-container">
+          <img id="photo-img" alt="Your uploaded photo" class="w-full h-full object-cover"/>
+        </div>
+        <button id="photo-replace" type="button" class="font-label-sm text-label-sm uppercase tracking-wider text-primary hover:text-primary-container transition-colors">Replace</button>
+      </div>
+      <input id="photo-input" type="file" accept="image/*" class="hidden"/>
+
+      <div class="w-full bg-surface-container-low rounded p-space-lg text-left flex items-start gap-space-md">
+        <input id="consent-checkbox" type="checkbox" class="mt-1 w-4 h-4 rounded text-primary border-outline-variant accent-primary cursor-pointer shrink-0"/>
+        <label for="consent-checkbox" class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer">
+          I understand and agree — this photo is analyzed to generate guidance, and is never altered, shared, or used to regenerate my face.
+        </label>
+      </div>
+
+      <div class="w-full flex items-center justify-between pt-space-lg">
+        <button type="button" data-back class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Back</button>
+        <button id="photo-continue" type="button" data-next class="inline-flex items-center justify-center h-[54px] px-space-2xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-primary-container">Continue</button>
+      </div>
+    </section>
+
+    <!-- STEP 3 — Beauty profile -->
+    <section data-step="3" hidden class="flex flex-col gap-space-xl">
+      <div class="text-center flex flex-col items-center gap-space-sm">
+        <h1 class="font-display text-headline-lg text-on-surface">Let's confirm your beauty profile.</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-md">We've made a guess — feel free to adjust anything.</p>
+      </div>
+
+      <div data-chip-group class="flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Skin type</span>
+        <div class="flex flex-wrap gap-space-xs">
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Dry</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Combination<span class="ml-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/20 font-label-sm text-label-sm uppercase">Suggested</span></button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Oily</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Normal</button>
+        </div>
+      </div>
+
+      <div data-chip-group class="flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Skin tone</span>
+        <div class="flex flex-wrap gap-space-xs">
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Fair</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Light</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Medium<span class="ml-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/20 font-label-sm text-label-sm uppercase">Suggested</span></button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Tan</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Deep</button>
+        </div>
+      </div>
+
+      <div data-chip-group class="flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Undertone</span>
+        <div class="flex flex-wrap gap-space-xs">
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Cool</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Neutral<span class="ml-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/20 font-label-sm text-label-sm uppercase">Suggested</span></button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Warm</button>
+        </div>
+      </div>
+
+      <div class="w-full flex items-center justify-between pt-space-md">
+        <button type="button" data-back class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Back</button>
+        <button type="button" data-next class="inline-flex items-center justify-center h-[54px] px-space-2xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors">Continue</button>
+      </div>
+    </section>
+
+    <!-- STEP 4 — Features -->
+    <section data-step="4" hidden class="flex flex-col gap-space-xl">
+      <div class="text-center flex flex-col items-center gap-space-sm">
+        <h1 class="font-display text-headline-lg text-on-surface">A few details about your features.</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-md">Suggested from your photo — adjust anything that doesn't fit.</p>
+      </div>
+
+      <div data-chip-group class="flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Eye shape</span>
+        <div class="flex flex-wrap gap-space-xs">
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Almond<span class="ml-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/20 font-label-sm text-label-sm uppercase">Suggested</span></button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Round</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Hooded</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Monolid</button>
+        </div>
+      </div>
+
+      <div data-chip-group class="flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Face shape</span>
+        <div class="flex flex-wrap gap-space-xs">
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Round</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Oval<span class="ml-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/20 font-label-sm text-label-sm uppercase">Suggested</span></button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Square</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Heart</button>
+        </div>
+      </div>
+
+      <div data-chip-group class="flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Lip shape</span>
+        <div class="flex flex-wrap gap-space-xs">
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Full<span class="ml-2 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/20 font-label-sm text-label-sm uppercase">Suggested</span></button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Thin</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Heart-shaped</button>
+          <button type="button" data-chip class="relative px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Wide</button>
+        </div>
+      </div>
+
+      <div class="w-full flex items-center justify-between pt-space-md">
+        <button type="button" data-back class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Back</button>
+        <button id="generate-continue" type="button" class="inline-flex items-center justify-center h-[54px] px-space-2xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors">Continue</button>
+      </div>
+    </section>
+
+    <!-- STEP 5 — Generating -->
+    <section data-step="5" hidden class="flex flex-col items-center text-center gap-space-lg py-space-4xl">
+      <div class="relative w-16 h-16 flex items-center justify-center">
+        <span class="absolute inset-0 rounded-full border-4 border-surface-container-high"></span>
+        <span class="absolute inset-0 rounded-full border-4 border-primary-container border-t-transparent animate-spin"></span>
+      </div>
+      <h1 class="font-display text-headline-lg text-on-surface">Building your guide</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant">This usually takes a moment.</p>
+    </section>
+
+    <!-- STEP 6 — Your guide -->
+    <section data-step="6" hidden class="flex flex-col gap-space-xl">
+      <h1 class="font-display text-headline-lg text-on-surface text-center">Here's your guide.</h1>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-desktop items-start">
+        <!-- Face-zone diagram -->
+        <div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-space-xl flex flex-col items-center">
+          <div class="relative w-full max-w-[280px] aspect-[4/5]">
+            <svg class="w-full h-full stroke-on-surface-variant/40 fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" viewBox="0 0 300 380">
+              <path d="M 150 40 C 230 40 250 110 250 190 C 250 270 200 340 150 350 C 100 340 50 270 50 190 C 50 110 70 40 150 40 Z" stroke-dasharray="2 3"></path>
+              <path d="M 110 330 C 110 360 80 375 60 375"></path>
+              <path d="M 190 330 C 190 360 220 375 240 375"></path>
+              <path data-zone-shape="brows" class="stroke-primary-container transition-colors" d="M 90 135 Q 115 125 135 135" stroke-width="2.5"></path>
+              <path data-zone-shape="brows" class="stroke-primary-container transition-colors" d="M 165 135 Q 185 125 210 135" stroke-width="2.5"></path>
+              <ellipse data-zone-shape="eyes" class="fill-surface-container-high/40 stroke-primary-container/70 transition-colors" cx="112" cy="155" rx="20" ry="8"></ellipse>
+              <circle class="fill-on-surface-variant" cx="112" cy="155" r="4"></circle>
+              <ellipse data-zone-shape="eyes" class="fill-surface-container-high/40 stroke-primary-container/70 transition-colors" cx="188" cy="155" rx="20" ry="8"></ellipse>
+              <circle class="fill-on-surface-variant" cx="188" cy="155" r="4"></circle>
+              <path d="M 150 150 L 146 215 Q 150 222 154 220"></path>
+              <path d="M 140 220 Q 150 225 160 220"></path>
+              <ellipse data-zone-shape="cheeks" class="fill-on-primary-container/20 stroke-on-primary-container transition-colors" cx="88" cy="215" rx="26" ry="16" stroke-dasharray="3 2"></ellipse>
+              <ellipse data-zone-shape="cheeks" class="fill-on-primary-container/20 stroke-on-primary-container transition-colors" cx="212" cy="215" rx="26" ry="16" stroke-dasharray="3 2"></ellipse>
+              <path data-zone-shape="contour" class="stroke-on-tertiary-container/80 transition-colors" d="M 75 245 Q 95 255 120 258" stroke-dasharray="2 3" stroke-width="1.5"></path>
+              <path data-zone-shape="contour" class="stroke-on-tertiary-container/80 transition-colors" d="M 225 245 Q 205 255 180 258" stroke-dasharray="2 3" stroke-width="1.5"></path>
+              <path data-zone-shape="lips" class="fill-primary-container/20 stroke-primary-container transition-colors" d="M 125 278 Q 150 268 175 278 Q 150 298 125 278 Z" stroke-width="1.5"></path>
+              <path d="M 127 278 Q 150 284 173 278"></path>
+
+              <g data-zone="brows" tabindex="0" class="cursor-pointer focus:outline-2 focus:outline-primary-container focus:outline-offset-4 rounded-full">
+                <line stroke="#84727a" stroke-width="0.8" x1="210" x2="258" y1="135" y2="118"></line>
+                <circle class="fill-primary-container" cx="266" cy="112" r="11"></circle>
+                <text x="266" y="116" text-anchor="middle" class="fill-surface-container-lowest" font-size="11" font-weight="700" stroke="none">1</text>
+              </g>
+              <g data-zone="eyes" tabindex="0" class="cursor-pointer focus:outline-2 focus:outline-primary-container focus:outline-offset-4 rounded-full">
+                <line stroke="#84727a" stroke-width="0.8" x1="88" x2="34" y1="155" y2="148"></line>
+                <circle class="fill-primary-container" cx="26" cy="142" r="11"></circle>
+                <text x="26" y="146" text-anchor="middle" class="fill-surface-container-lowest" font-size="11" font-weight="700" stroke="none">2</text>
+              </g>
+              <g data-zone="cheeks" tabindex="0" class="cursor-pointer focus:outline-2 focus:outline-primary-container focus:outline-offset-4 rounded-full">
+                <line stroke="#84727a" stroke-width="0.8" x1="225" x2="266" y1="215" y2="215"></line>
+                <circle class="fill-primary-container" cx="274" cy="215" r="11"></circle>
+                <text x="274" y="219" text-anchor="middle" class="fill-surface-container-lowest" font-size="11" font-weight="700" stroke="none">3</text>
+              </g>
+              <g data-zone="contour" tabindex="0" class="cursor-pointer focus:outline-2 focus:outline-primary-container focus:outline-offset-4 rounded-full">
+                <line stroke="#84727a" stroke-width="0.8" x1="75" x2="34" y1="245" y2="255"></line>
+                <circle class="fill-primary-container" cx="26" cy="258" r="11"></circle>
+                <text x="26" y="262" text-anchor="middle" class="fill-surface-container-lowest" font-size="11" font-weight="700" stroke="none">4</text>
+              </g>
+              <g data-zone="lips" tabindex="0" class="cursor-pointer focus:outline-2 focus:outline-primary-container focus:outline-offset-4 rounded-full">
+                <line stroke="#84727a" stroke-width="0.8" x1="175" x2="222" y1="285" y2="300"></line>
+                <circle class="fill-primary-container" cx="230" cy="303" r="11"></circle>
+                <text x="230" y="307" text-anchor="middle" class="fill-surface-container-lowest" font-size="11" font-weight="700" stroke="none">5</text>
+              </g>
+            </svg>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant italic mt-space-sm">Tap or hover a number to see where it applies</p>
+        </div>
+
+        <!-- Photos + instructions -->
+        <div class="flex flex-col gap-space-lg">
+          <div class="grid grid-cols-2 gap-space-sm">
+            <div class="flex flex-col gap-space-xs">
+              <div class="aspect-square rounded overflow-hidden bg-surface-container">
+                <img id="guide-photo-img" src="assets/images/look-portrait-neutral.png" alt="Your photo" class="w-full h-full object-cover"/>
+              </div>
+              <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant text-center">Your photo</span>
+            </div>
+            <div class="flex flex-col gap-space-xs">
+              <div class="aspect-square rounded overflow-hidden bg-surface-container">
+                <img id="guide-inspo-img" src="assets/images/hero-daylight-blush.png" alt="Inspiration" class="w-full h-full object-cover"/>
+              </div>
+              <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant text-center">Inspiration</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-space-sm">
+            <div data-zone-row="brows" class="flex items-start gap-space-md p-space-md rounded transition-colors">
+              <span class="w-7 h-7 rounded-full bg-primary-container text-surface-container-lowest font-headline-sm text-label-md flex items-center justify-center shrink-0">1</span>
+              <p class="font-body-md text-body-md text-on-surface"><span class="font-semibold">Brows</span> — soft, natural definition following your existing arch.</p>
+            </div>
+            <div data-zone-row="eyes" class="flex items-start gap-space-md p-space-md rounded transition-colors">
+              <span class="w-7 h-7 rounded-full bg-primary-container text-surface-container-lowest font-headline-sm text-label-md flex items-center justify-center shrink-0">2</span>
+              <p class="font-body-md text-body-md text-on-surface"><span class="font-semibold">Eyes</span> — a warm neutral wash across the lid, softly diffused at the crease.</p>
+            </div>
+            <div data-zone-row="cheeks" class="flex items-start gap-space-md p-space-md rounded transition-colors">
+              <span class="w-7 h-7 rounded-full bg-primary-container text-surface-container-lowest font-headline-sm text-label-md flex items-center justify-center shrink-0">3</span>
+              <p class="font-body-md text-body-md text-on-surface"><span class="font-semibold">Cheeks</span> — cream blush placed high on the cheekbone, tapped toward the temple.</p>
+            </div>
+            <div data-zone-row="contour" class="flex items-start gap-space-md p-space-md rounded transition-colors">
+              <span class="w-7 h-7 rounded-full bg-primary-container text-surface-container-lowest font-headline-sm text-label-md flex items-center justify-center shrink-0">4</span>
+              <p class="font-body-md text-body-md text-on-surface"><span class="font-semibold">Contour</span> — a light shadow beneath the cheekbone, blended so no edge shows.</p>
+            </div>
+            <div data-zone-row="lips" class="flex items-start gap-space-md p-space-md rounded transition-colors">
+              <span class="w-7 h-7 rounded-full bg-primary-container text-surface-container-lowest font-headline-sm text-label-md flex items-center justify-center shrink-0">5</span>
+              <p class="font-body-md text-body-md text-on-surface"><span class="font-semibold">Lips</span> — a muted rose tint, patted rather than lined for a soft finish.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex items-center justify-between pt-space-md max-w-2xl mx-auto">
+        <button type="button" data-back data-back-target="4" class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Back</button>
+        <button type="button" data-next class="inline-flex items-center justify-center h-[54px] px-space-2xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors">Continue</button>
+      </div>
+    </section>
+
+    <!-- STEP 7 — Recommendations -->
+    <section data-step="7" hidden class="flex flex-col gap-space-xl">
+      <h1 class="font-display text-headline-lg text-on-surface text-center">What you'll need.</h1>
+
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center gap-space-xs">
+          <span class="material-symbols-outlined text-primary-container text-lg">check_circle</span>
+          <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface">From your kit</span>
+        </div>
+        <div class="flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant">
+          <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+          <div>
+            <p class="font-body-md text-body-md text-on-surface">Sheer luminous skin balm</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Glow & Co · Warm Sand</p>
+          </div>
+          <span class="material-symbols-outlined text-primary-container ml-auto">check_circle</span>
+        </div>
+        <div class="flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant">
+          <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+          <div>
+            <p class="font-body-md text-body-md text-on-surface">Satin quad palette</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Studio Neutral · Shade 02</p>
+          </div>
+          <span class="material-symbols-outlined text-primary-container ml-auto">check_circle</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-space-sm">
+        <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Worth adding</span>
+        <div class="flex items-center gap-space-md p-space-md bg-surface-container-low rounded">
+          <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+          <div>
+            <p class="font-body-md text-body-md text-on-surface">Cream blush stick</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Muted Rose</p>
+          </div>
+          <a href="#" class="ml-auto font-label-sm text-label-sm uppercase tracking-wider text-primary hover:text-primary-container transition-colors">View</a>
+        </div>
+      </div>
+
+      <div class="w-full flex items-center justify-between pt-space-md">
+        <button type="button" data-back class="font-label-lg text-label-lg uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Back</button>
+        <button type="button" data-next class="inline-flex items-center justify-center h-[54px] px-space-2xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors">Continue</button>
+      </div>
+    </section>
+
+    <!-- STEP 8 — Saved -->
+    <section data-step="8" hidden class="flex flex-col items-center text-center gap-space-lg py-space-4xl">
+      <span class="material-symbols-outlined text-4xl text-primary-container">check_circle</span>
+      <h1 class="font-display text-headline-lg text-on-surface">Saved to your looks</h1>
+      <div class="flex flex-col items-center gap-space-sm pt-space-sm">
+        <a href="looks.html" class="inline-flex items-center justify-center h-[54px] px-space-2xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors">View in Looks</a>
+        <a href="home.html" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Back to Home</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="assets/js/create.js" defer=""></script>
+</body></html>

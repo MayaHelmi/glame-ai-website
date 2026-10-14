@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+/* JS files that add/toggle Tailwind classes at runtime — v4's scanner only
+   reads *.html by default (see tailwind.config.js `content`), so any class
+   name that appears ONLY inside these scripts needs to be listed here or it
+   silently never gets generated. */
+@source "../js/create.js";
+@source "../js/auth.js";
+@source "../js/kit.js";
+@source "../js/profile.js";
+@source "../js/looks.js";
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Premium-polish pass (forensic review, 2026-09-07) — small, self-contained
+   additions; none of these change existing show/hide or navigation logic. */
+@layer components {
+  /* Press feedback on primary pill CTAs — previously hover-only, so clicking
+     gave zero tactile feedback. Scoped to actual buttons/links carrying the
+     brand fill, not decorative badges that happen to share the color. */
+  a.bg-primary-container,
+  button.bg-primary-container {
+    transition: transform 0.15s ease, background-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  a.bg-primary-container:active,
+  button.bg-primary-container:active {
+    transform: scale(0.97);
+  }
+
+  /* Create wizard's progress-stepper segments changed color instantly;
+     every other color change on the site transitions. */
+  [data-segment] {
+    transition: background-color 0.25s ease;
+  }
+
+  /* Create wizard steps were a hard cut with no transition. A calm fade-up
+     on entry, matching the site's restrained motion elsewhere. */
+  [data-step]:not([hidden]) {
+    animation: step-fade-in 0.28s ease;
+  }
+
+  /* Full-site audit (2026-09-07): horizontally-scrolling rows (Profile's
+     sub-nav, Kit's filter pills) clipped extra content with zero visual cue
+     that more existed — scrollbars are disabled sitewide. A right-edge fade
+     signals "there's more" without adding a visible scrollbar or an arrow. */
+  .scroll-fade-x {
+    mask-image: linear-gradient(to right, black calc(100% - 28px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black calc(100% - 28px), transparent 100%);
+  }
+
+  @media (min-width: 768px) {
+    .scroll-fade-x {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+
+  /* Floating product shelf in the hero. Purely decorative and
+     pointer-events-none so it can never intercept the compare drag.
+     Each tile sets its own --t (duration), --d (delay) and rotation
+     endpoints inline so the twelve drift out of sync. */
+  .product-float {
+    width: var(--s);
+    height: var(--s);
+    animation: product-drift var(--t, 9s) ease-in-out var(--d, 0s) infinite alternate;
+    will-change: transform;
+  }
+
+  /* Full size crowds a 375px hero — the cutouts start covering her face and
+     clipping off the edge — so scale them down below the sm breakpoint. */
+  @media (width < 40rem) {
+    .product-float {
+      width: calc(var(--s) * 0.58);
+      height: calc(var(--s) * 0.58);
+    }
+  }
+
+  .product-float img {
+    filter: drop-shadow(0 12px 20px rgb(0 0 0 / 0.45));
+  }
+
+  /* "How it works" — staggered card entrance and the progress spine.
+     The hidden start state is gated behind [data-steps="ready"], which JS adds,
+     so if the script never runs the copy is simply visible rather than invisible.
+     The transition lives on a WRAPPER, not the card, so the card keeps its own
+     hover:shadow-md / transition-shadow untouched. */
+  [data-step-card] {
+    transition:
+      opacity 600ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 600ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition-delay: var(--step-delay, 0ms);
+  }
+
+  [data-steps="ready"] [data-step-card] {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  [data-steps="ready"] [data-step-card][data-visible] {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-spine-fill] {
+    transition: height 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  /* Before/after compare slider — pre-JS default only; assets/js/index.js
+     takes over on load. Must clip the SAME layer that index.js clips (see the
+     layout contract at the top of that file). */
+  [data-compare-before] {
+    clip-path: inset(0 50% 0 0);
+  }
+  [data-compare-line] {
+    left: 50%;
+  }
+}
+
+@keyframes product-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(var(--r0, -3deg));
+  }
+  to {
+    transform: translate3d(var(--dx, 0px), var(--dy, -26px), 0)
+      rotate(var(--r1, 3deg));
+  }
+}
+
+@keyframes step-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-step]:not([hidden]) {
+    animation: none;
+  }
+
+  .product-float {
+    animation: none;
+  }
+
+  [data-step-card],
+  [data-spine-fill] {
+    transition: none;
+  }
+
+  [data-steps="ready"] [data-step-card] {
+    opacity: 1;
+    transform: none;
+  }
+}

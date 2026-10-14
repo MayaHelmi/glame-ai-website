@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Glamé — Kit</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Syne:wght@400..800&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/tailwind.css"/>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+  <div class="h-20 max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between">
+    <a class="flex items-center gap-space-sm group" href="home.html"><div class="flex items-center space-x-[-4px]"><span class="w-3 h-3 bg-primary rotate-45 transform transition-transform group-hover:scale-110"></span><span class="w-3 h-3 bg-primary-fixed-dim rotate-45 transform transition-transform group-hover:scale-110"></span></div><span class="font-display text-headline-md text-primary pl-space-xs">Glamé</span></a>
+    <div class="flex items-center gap-space-xl">
+      <nav class="hidden md:flex items-center gap-space-xl font-label-lg text-label-lg tracking-wider uppercase">
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="home.html">Home</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="create.html">Create</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="looks.html">Looks</a>
+        <a aria-current="page" class="transition-colors text-primary-container font-semibold border-b-2 border-primary-container pb-0.5" href="kit.html">Kit</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="profile.html">Profile</a>
+      </nav>
+      <a class="p-0.5 rounded-full ring-1 ring-outline-variant hover:ring-primary-container transition-all flex items-center justify-center" href="profile.html"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="assets/images/avatar-profile.png"/></a>
+    </div>
+  </div>
+</header>
+
+<main class="w-full pt-20 bg-surface min-h-screen">
+<div class="w-full max-w-4xl mx-auto px-margin-mobile lg:px-margin-desktop py-space-xl lg:py-space-2xl">
+
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg pb-space-xl">
+    <div class="flex flex-col gap-space-xs">
+      <h1 class="font-display text-headline-lg text-primary tracking-tight">Your kit</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant">Everything you already own — this is what your guides are built around.</p>
+    </div>
+    <button type="button" id="open-add-panel" class="inline-flex items-center justify-center gap-space-xs h-[52px] px-space-xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors shrink-0">
+      <span class="material-symbols-outlined text-lg">add</span>
+      <span>Add product</span>
+    </button>
+  </div>
+
+  <!-- Search + filters -->
+  <div class="flex flex-col gap-space-md pb-space-xl">
+    <div class="relative">
+      <span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+      <input id="kit-search" type="text" aria-label="Search your kit" placeholder="Search your kit" class="w-full h-[52px] pl-space-2xl pr-space-md bg-surface-container-lowest border border-outline-variant rounded-full font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container transition-colors"/>
+    </div>
+    <div id="filter-pills" class="scroll-fade-x flex items-center gap-space-xs overflow-x-auto">
+      <button type="button" data-filter="all" class="shrink-0 px-space-lg py-2 rounded-full font-label-md text-label-md uppercase tracking-wider bg-primary-container text-surface-container-lowest transition-colors">All</button>
+      <button type="button" data-filter="face" class="shrink-0 px-space-lg py-2 rounded-full font-label-md text-label-md uppercase tracking-wider border border-outline-variant text-on-surface-variant hover:border-primary-container transition-colors">Face</button>
+      <button type="button" data-filter="eyes" class="shrink-0 px-space-lg py-2 rounded-full font-label-md text-label-md uppercase tracking-wider border border-outline-variant text-on-surface-variant hover:border-primary-container transition-colors">Eyes</button>
+      <button type="button" data-filter="lips" class="shrink-0 px-space-lg py-2 rounded-full font-label-md text-label-md uppercase tracking-wider border border-outline-variant text-on-surface-variant hover:border-primary-container transition-colors">Lips</button>
+      <button type="button" data-filter="cheeks" class="shrink-0 px-space-lg py-2 rounded-full font-label-md text-label-md uppercase tracking-wider border border-outline-variant text-on-surface-variant hover:border-primary-container transition-colors">Cheeks</button>
+    </div>
+  </div>
+
+  <!-- Product list -->
+  <div id="product-list" class="flex flex-col gap-space-sm">
+    <div class="product-row flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant group" data-name="sheer luminous skin balm" data-brand="glow & co" data-category="face">
+      <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+      <div class="min-w-0">
+        <p class="font-body-md text-body-md text-on-surface truncate">Sheer Luminous Skin Balm</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Glow &amp; Co · Warm Sand</p>
+      </div>
+      <button type="button" class="remove-btn ml-auto shrink-0 px-space-sm py-space-xs -my-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Remove</button>
+    </div>
+    <div class="product-row flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant group" data-name="cream bronzer stick" data-brand="sunworn" data-category="face">
+      <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+      <div class="min-w-0">
+        <p class="font-body-md text-body-md text-on-surface truncate">Cream Bronzer Stick</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Sunworn · Terracotta</p>
+      </div>
+      <button type="button" class="remove-btn ml-auto shrink-0 px-space-sm py-space-xs -my-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Remove</button>
+    </div>
+    <div class="product-row flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant group" data-name="satin quad palette" data-brand="studio neutral" data-category="eyes">
+      <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+      <div class="min-w-0">
+        <p class="font-body-md text-body-md text-on-surface truncate">Satin Quad Palette</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Studio Neutral · Shade 02</p>
+      </div>
+      <button type="button" class="remove-btn ml-auto shrink-0 px-space-sm py-space-xs -my-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Remove</button>
+    </div>
+    <div class="product-row flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant group" data-name="volumizing mascara" data-brand="lash line" data-category="eyes">
+      <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+      <div class="min-w-0">
+        <p class="font-body-md text-body-md text-on-surface truncate">Volumizing Mascara</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Lash Line · Black</p>
+      </div>
+      <button type="button" class="remove-btn ml-auto shrink-0 px-space-sm py-space-xs -my-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Remove</button>
+    </div>
+    <div class="product-row flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant group" data-name="soft brow pencil" data-brand="studio neutral" data-category="eyes">
+      <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+      <div class="min-w-0">
+        <p class="font-body-md text-body-md text-on-surface truncate">Soft Brow Pencil</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Studio Neutral · Taupe</p>
+      </div>
+      <button type="button" class="remove-btn ml-auto shrink-0 px-space-sm py-space-xs -my-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Remove</button>
+    </div>
+    <div class="product-row flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant group" data-name="multipurpose lip & cheek stick" data-brand="bare theory" data-category="cheeks">
+      <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+      <div class="min-w-0">
+        <p class="font-body-md text-body-md text-on-surface truncate">Multipurpose Lip &amp; Cheek Stick</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Bare Theory · Rose</p>
+      </div>
+      <button type="button" class="remove-btn ml-auto shrink-0 px-space-sm py-space-xs -my-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Remove</button>
+    </div>
+    <div class="product-row flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant group" data-name="muted rose lipstick" data-brand="bare theory" data-category="lips">
+      <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+      <div class="min-w-0">
+        <p class="font-body-md text-body-md text-on-surface truncate">Muted Rose Lipstick</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Bare Theory · Muted Rose</p>
+      </div>
+      <button type="button" class="remove-btn ml-auto shrink-0 px-space-sm py-space-xs -my-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Remove</button>
+    </div>
+    <div class="product-row flex items-center gap-space-md p-space-md bg-surface-container-lowest rounded border border-outline-variant group" data-name="tinted lip balm" data-brand="bare theory" data-category="lips">
+      <div class="w-12 h-12 rounded bg-surface-container shrink-0"></div>
+      <div class="min-w-0">
+        <p class="font-body-md text-body-md text-on-surface truncate">Tinted Lip Balm</p>
+        <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Bare Theory · Sheer Berry</p>
+      </div>
+      <button type="button" class="remove-btn ml-auto shrink-0 px-space-sm py-space-xs -my-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Remove</button>
+    </div>
+  </div>
+
+  <!-- No search/filter results (distinct from the full empty-kit state below) -->
+  <p id="no-matches" hidden class="text-center py-space-2xl font-body-md text-body-md text-on-surface-variant">Nothing matches that search.</p>
+
+  <!-- Empty kit state — not reachable from the live UI while sample data exists; shown automatically once every product row has been removed. -->
+  <div id="empty-kit" hidden class="flex-col items-start text-left gap-space-sm p-space-2xl rounded-lg bg-surface-container-low">
+    <h3 class="font-display text-headline-sm text-on-surface">Your kit is empty</h3>
+    <p class="font-body-md text-body-md text-on-surface-variant max-w-md">This is where your real products live, once you add them — your guides are always built around what's here first.</p>
+    <button type="button" data-open-panel class="mt-space-sm inline-flex items-center justify-center h-[52px] px-space-xl rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors">Add your first product</button>
+  </div>
+
+</div>
+</main>
+
+<!-- Add product slide-over -->
+<div id="add-panel-backdrop" hidden class="fixed inset-0 bg-on-surface/30 z-40"></div>
+<aside id="add-panel" hidden class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-surface z-50 shadow-lg flex flex-col">
+  <div class="flex items-center justify-between p-space-lg border-b border-outline-variant">
+    <h2 class="font-display text-headline-sm text-on-surface">Add product</h2>
+    <button type="button" id="close-add-panel" aria-label="Close" class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  <div class="flex border-b border-outline-variant">
+    <button type="button" data-panel-tab="search" class="flex-1 py-space-md font-label-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary-container">Search catalog</button>
+    <button type="button" data-panel-tab="manual" class="flex-1 py-space-md font-label-md text-label-md uppercase tracking-wider text-on-surface-variant border-b-2 border-transparent">Add manually</button>
+  </div>
+
+  <div class="flex-1 overflow-y-auto p-space-lg">
+
+    <div id="panel-search" class="flex flex-col gap-space-md">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">search</span>
+        <input id="catalog-search" type="text" aria-label="Search the catalog" placeholder="Search the catalog" class="w-full h-[48px] pl-space-2xl pr-space-md bg-surface-container-lowest border border-outline-variant rounded-full font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors"/>
+      </div>
+      <div class="flex flex-col gap-space-xs">
+        <div class="catalog-row flex items-center gap-space-md p-space-sm" data-name="dewy setting mist" data-brand="glow &amp; co" data-shade="" data-category="face">
+          <div class="w-10 h-10 rounded bg-surface-container shrink-0"></div>
+          <div class="min-w-0"><p class="font-body-sm text-body-sm text-on-surface">Dewy Setting Mist</p><p class="font-body-sm text-body-sm text-on-surface-variant">Glow &amp; Co</p></div>
+          <button type="button" class="catalog-add ml-auto shrink-0 font-label-sm text-label-sm uppercase tracking-wider text-primary hover:text-primary-container transition-colors">Add</button>
+        </div>
+        <div class="catalog-row flex items-center gap-space-md p-space-sm" data-name="soft kohl eyeliner" data-brand="lash line" data-shade="espresso" data-category="eyes">
+          <div class="w-10 h-10 rounded bg-surface-container shrink-0"></div>
+          <div class="min-w-0"><p class="font-body-sm text-body-sm text-on-surface">Soft Kohl Eyeliner</p><p class="font-body-sm text-body-sm text-on-surface-variant">Lash Line · Espresso</p></div>
+          <button type="button" class="catalog-add ml-auto shrink-0 font-label-sm text-label-sm uppercase tracking-wider text-primary hover:text-primary-container transition-colors">Add</button>
+        </div>
+        <div class="catalog-row flex items-center gap-space-md p-space-sm" data-name="sheer berry tint" data-brand="bare theory" data-shade="sheer berry" data-category="lips">
+          <div class="w-10 h-10 rounded bg-surface-container shrink-0"></div>
+          <div class="min-w-0"><p class="font-body-sm text-body-sm text-on-surface">Sheer Berry Tint</p><p class="font-body-sm text-body-sm text-on-surface-variant">Bare Theory · Sheer Berry</p></div>
+          <button type="button" class="catalog-add ml-auto shrink-0 font-label-sm text-label-sm uppercase tracking-wider text-primary hover:text-primary-container transition-colors">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <form id="panel-manual" hidden class="flex flex-col gap-space-md">
+      <div class="flex flex-col gap-space-xs">
+        <label for="manual-name" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Name</label>
+        <input id="manual-name" type="text" required="" class="h-[48px] px-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors"/>
+      </div>
+      <div class="flex flex-col gap-space-xs">
+        <label for="manual-brand" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Brand</label>
+        <input id="manual-brand" type="text" class="h-[48px] px-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors"/>
+      </div>
+      <div class="flex flex-col gap-space-xs">
+        <label for="manual-shade" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Shade</label>
+        <input id="manual-shade" type="text" class="h-[48px] px-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors"/>
+      </div>
+      <div class="flex flex-col gap-space-xs">
+        <label for="manual-category" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Category</label>
+        <select id="manual-category" class="h-[48px] px-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors">
+          <option value="face">Face</option>
+          <option value="eyes">Eyes</option>
+          <option value="lips">Lips</option>
+          <option value="cheeks">Cheeks</option>
+        </select>
+      </div>
+      <button type="submit" class="mt-space-sm h-[52px] rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary transition-colors">Add to kit</button>
+    </form>
+
+  </div>
+</aside>
+
+<footer class="w-full bg-surface-container-low border-t border-outline-variant">
+  <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop py-space-2xl flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+    <p>© 2026 Glamé. All rights reserved.</p>
+    <nav class="flex items-center gap-space-lg font-label-md text-label-md uppercase tracking-wider">
+      <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+      <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+      <a class="hover:text-primary transition-colors" href="#">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/kit.js" defer=""></script>
+</body></html>

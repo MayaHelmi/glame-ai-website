@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Glamé — Profile</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Syne:wght@400..800&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/tailwind.css"/>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+  <div class="h-20 max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between">
+    <a class="flex items-center gap-space-sm group" href="home.html"><div class="flex items-center space-x-[-4px]"><span class="w-3 h-3 bg-primary rotate-45 transform transition-transform group-hover:scale-110"></span><span class="w-3 h-3 bg-primary-fixed-dim rotate-45 transform transition-transform group-hover:scale-110"></span></div><span class="font-display text-headline-md text-primary pl-space-xs">Glamé</span></a>
+    <div class="flex items-center gap-space-xl">
+      <nav class="hidden md:flex items-center gap-space-xl font-label-lg text-label-lg tracking-wider uppercase">
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="home.html">Home</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="create.html">Create</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="looks.html">Looks</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="kit.html">Kit</a>
+        <a aria-current="page" class="transition-colors text-primary-container font-semibold border-b-2 border-primary-container pb-0.5" href="profile.html">Profile</a>
+      </nav>
+      <a class="p-0.5 rounded-full ring-1 ring-primary-container flex items-center justify-center" href="profile.html"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="assets/images/avatar-profile.png"/></a>
+    </div>
+  </div>
+</header>
+
+<main class="w-full pt-20 bg-surface min-h-screen">
+<div class="w-full max-w-5xl mx-auto px-margin-mobile lg:px-margin-desktop py-space-xl lg:py-space-2xl">
+
+  <!-- Page header -->
+  <div class="flex items-center gap-space-lg pb-space-2xl">
+    <img alt="Profile" src="assets/images/avatar-profile.png" class="w-20 h-20 rounded-full object-cover"/>
+    <div>
+      <h1 class="font-display text-headline-lg text-primary tracking-tight">Maya</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant">maya@example.com</p>
+    </div>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-space-2xl">
+
+    <!-- Sub-nav -->
+    <nav class="scroll-fade-x flex md:flex-col gap-space-xs overflow-x-auto md:overflow-visible md:w-[200px] shrink-0 pb-space-xs md:pb-0 border-b md:border-b-0 border-outline-variant md:sticky md:top-20 md:self-start">
+      <button type="button" data-section="beauty" class="profile-tab shrink-0 text-left px-space-md py-space-sm rounded font-label-md text-label-md uppercase tracking-wider whitespace-nowrap border-l-2 md:border-l-2 border-primary-container text-primary-container bg-surface-container-low">Beauty preferences</button>
+      <button type="button" data-section="features" class="profile-tab shrink-0 text-left px-space-md py-space-sm rounded font-label-md text-label-md uppercase tracking-wider whitespace-nowrap border-l-2 border-transparent text-on-surface-variant hover:text-on-surface">Facial features</button>
+      <button type="button" data-section="account" class="profile-tab shrink-0 text-left px-space-md py-space-sm rounded font-label-md text-label-md uppercase tracking-wider whitespace-nowrap border-l-2 border-transparent text-on-surface-variant hover:text-on-surface">Account</button>
+      <button type="button" data-section="privacy" class="profile-tab shrink-0 text-left px-space-md py-space-sm rounded font-label-md text-label-md uppercase tracking-wider whitespace-nowrap border-l-2 border-transparent text-on-surface-variant hover:text-on-surface">Privacy &amp; data</button>
+      <button type="button" data-section="notifications" class="profile-tab shrink-0 text-left px-space-md py-space-sm rounded font-label-md text-label-md uppercase tracking-wider whitespace-nowrap border-l-2 border-transparent text-on-surface-variant hover:text-on-surface">Notifications</button>
+    </nav>
+
+    <!-- Content -->
+    <div class="flex-1 min-w-0">
+
+      <!-- Beauty preferences -->
+      <section data-panel="beauty" class="flex flex-col gap-space-xl">
+        <div class="flex items-center gap-space-md">
+          <h2 class="font-display text-headline-md text-on-surface">Beauty preferences</h2>
+          <span data-saved-flash class="saved-flash font-label-sm text-label-sm uppercase tracking-wider text-primary opacity-0 transition-opacity">Saved</span>
+        </div>
+
+        <div data-chip-group class="flex flex-col gap-space-sm">
+          <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Skin type</span>
+          <div class="flex flex-wrap gap-space-xs">
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Dry</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Combination</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Oily</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Normal</button>
+          </div>
+        </div>
+
+        <div data-chip-group class="flex flex-col gap-space-sm">
+          <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Skin tone</span>
+          <div class="flex flex-wrap gap-space-xs">
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Fair</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Light</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Medium</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Tan</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Deep</button>
+          </div>
+        </div>
+
+        <div data-chip-group class="flex flex-col gap-space-sm">
+          <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Undertone</span>
+          <div class="flex flex-wrap gap-space-xs">
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Cool</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Neutral</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Warm</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Facial features -->
+      <section data-panel="features" hidden class="flex flex-col gap-space-xl">
+        <div class="flex items-center gap-space-md">
+          <h2 class="font-display text-headline-md text-on-surface">Facial features</h2>
+          <span data-saved-flash class="saved-flash font-label-sm text-label-sm uppercase tracking-wider text-primary opacity-0 transition-opacity">Saved</span>
+        </div>
+
+        <div data-chip-group class="flex flex-col gap-space-sm">
+          <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Eye shape</span>
+          <div class="flex flex-wrap gap-space-xs">
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Almond</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Round</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Hooded</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Monolid</button>
+          </div>
+        </div>
+
+        <div data-chip-group class="flex flex-col gap-space-sm">
+          <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Face shape</span>
+          <div class="flex flex-wrap gap-space-xs">
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Round</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Oval</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Square</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Heart</button>
+          </div>
+        </div>
+
+        <div data-chip-group class="flex flex-col gap-space-sm">
+          <span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Lip shape</span>
+          <div class="flex flex-wrap gap-space-xs">
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors bg-primary-container text-surface-container-lowest border-primary-container">Full</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Thin</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Heart-shaped</button>
+            <button type="button" data-chip class="px-space-lg py-space-sm rounded-full border border-outline-variant font-body-sm text-body-sm hover:border-primary-container transition-colors">Wide</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Account -->
+      <section data-panel="account" hidden class="flex flex-col gap-space-lg max-w-md">
+        <h2 class="font-display text-headline-md text-on-surface">Account</h2>
+
+        <div class="flex flex-col gap-space-xs">
+          <label for="acc-name" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Name</label>
+          <input id="acc-name" type="text" value="Maya" class="h-[52px] px-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors"/>
+        </div>
+        <div class="flex flex-col gap-space-xs">
+          <label for="acc-email" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant">Email</label>
+          <input id="acc-email" type="email" value="maya@example.com" class="h-[52px] px-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors"/>
+        </div>
+
+        <div class="border-t border-outline-variant pt-space-md">
+          <button type="button" id="toggle-password-row" class="flex items-center justify-between w-full text-left font-label-md text-label-md uppercase tracking-wider text-on-surface">
+            <span>Change password</span>
+            <span id="password-row-icon" class="material-symbols-outlined text-xl text-on-surface-variant transition-transform">expand_more</span>
+          </button>
+          <div id="password-row" hidden class="flex flex-col gap-space-sm mt-space-md">
+            <input type="password" aria-label="Current password" placeholder="Current password" class="h-[48px] px-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors"/>
+            <input type="password" aria-label="New password" placeholder="New password" class="h-[48px] px-space-md bg-surface-container-lowest border border-outline-variant rounded font-body-md text-body-md focus:outline-none focus:border-primary-container transition-colors"/>
+            <button type="button" class="self-start mt-space-xs h-[44px] px-space-lg rounded-full bg-primary-container text-surface-container-lowest font-label-md text-label-md uppercase tracking-wider hover:bg-primary transition-colors">Update password</button>
+          </div>
+        </div>
+
+        <div class="border-t border-outline-variant pt-space-lg">
+          <button type="button" id="sign-out" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors">Sign out</button>
+        </div>
+      </section>
+
+      <!-- Privacy & data -->
+      <section data-panel="privacy" hidden class="flex flex-col gap-space-lg max-w-lg">
+        <h2 class="font-display text-headline-md text-on-surface">Privacy &amp; data</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Your photos are analyzed only to build your personal guides. They're never shared, and never used to alter or regenerate your face.</p>
+        <a href="#" class="font-label-md text-label-md uppercase tracking-wider text-primary hover:text-primary-container transition-colors">Download my data</a>
+
+        <div class="border-t border-outline-variant pt-space-lg flex flex-col gap-space-sm items-start">
+          <button type="button" id="open-delete-modal" class="h-[48px] px-space-lg rounded-full border border-error text-error font-label-md text-label-md uppercase tracking-wider hover:bg-error/5 transition-colors">Delete my account</button>
+        </div>
+      </section>
+
+      <!-- Notifications -->
+      <section data-panel="notifications" hidden class="flex flex-col gap-space-lg max-w-md">
+        <h2 class="font-display text-headline-md text-on-surface">Notifications</h2>
+        <label class="flex items-center justify-between py-space-sm border-b border-outline-variant cursor-pointer">
+          <span class="font-body-md text-body-md text-on-surface">New feature updates</span>
+          <input type="checkbox" checked="" class="notif-toggle sr-only"/>
+          <span class="toggle-track relative w-11 h-6 rounded-full bg-primary-container transition-colors"><span class="toggle-thumb absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-surface-container-lowest transition-transform translate-x-5"></span></span>
+        </label>
+        <label class="flex items-center justify-between py-space-sm border-b border-outline-variant cursor-pointer">
+          <span class="font-body-md text-body-md text-on-surface">Tips &amp; inspiration</span>
+          <input type="checkbox" class="notif-toggle sr-only"/>
+          <span class="toggle-track relative w-11 h-6 rounded-full bg-surface-container-high transition-colors"><span class="toggle-thumb absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-surface-container-lowest transition-transform"></span></span>
+        </label>
+      </section>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<!-- Delete account confirmation -->
+<div id="delete-backdrop" hidden class="fixed inset-0 bg-on-surface/30 z-40 flex items-center justify-center p-margin-mobile">
+  <div id="delete-modal" class="bg-surface rounded-lg p-space-xl max-w-sm w-full flex flex-col gap-space-md">
+    <h3 class="font-display text-headline-sm text-on-surface">Delete your account?</h3>
+    <p class="font-body-md text-body-md text-on-surface-variant">This permanently deletes your account and all saved looks. This can't be undone.</p>
+    <div class="flex items-center justify-end gap-space-md pt-space-sm">
+      <button type="button" id="cancel-delete" class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors">Cancel</button>
+      <button type="button" id="confirm-delete" class="h-[48px] px-space-lg rounded-full bg-error text-surface-container-lowest font-label-md text-label-md uppercase tracking-wider hover:opacity-90 transition-opacity">Delete account</button>
+    </div>
+  </div>
+</div>
+
+<footer class="w-full bg-surface-container-low border-t border-outline-variant">
+  <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop py-space-2xl flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+    <p>© 2026 Glamé. All rights reserved.</p>
+    <nav class="flex items-center gap-space-lg font-label-md text-label-md uppercase tracking-wider">
+      <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+      <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+      <a class="hover:text-primary transition-colors" href="#">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/profile.js" defer=""></script>
+</body></html>

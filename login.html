@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Glamé — Log in</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Syne:wght@400..800&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/tailwind.css"/>
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface text-on-surface min-h-screen flex flex-col justify-between selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="w-full pt-space-2xl pb-space-lg flex flex-col items-center justify-center"><a class="group flex flex-col items-center gap-space-xxs" href="index.html"><span class="font-display text-headline-lg text-primary tracking-tight transition-opacity duration-300 group-hover:opacity-80">Glamé</span></a></header><main class="w-full flex-1 flex items-center justify-center px-margin-mobile md:px-margin-desktop py-space-xl"><div class="w-full max-w-[420px] mx-auto"><div class="flex flex-col w-full items-center justify-center">
+<div class="w-full bg-surface-container-lowest rounded-lg p-space-lg md:p-space-xl shadow-sm transition-all duration-300">
+<div class="flex flex-col items-center text-center">
+<div aria-hidden="true" class="relative w-9 h-9 flex items-center justify-center mb-space-xs">
+<div class="absolute w-5 h-5 rotate-45 rounded-[3px] bg-primary-container/25 -translate-x-1.5 translate-y-0.5"></div>
+<div class="absolute w-5 h-5 rotate-45 rounded-[3px] bg-primary-container translate-x-1 -translate-y-0.5 shadow-sm"></div>
+<div class="relative w-1.5 h-1.5 rounded-full bg-surface-container-lowest"></div>
+</div>
+<span class="font-display text-headline-sm text-primary">Glamé</span>
+<div class="mt-space-sm mb-space-lg flex flex-col items-center gap-space-xxs">
+<h1 class="font-display text-headline-lg font-normal text-on-surface tracking-tight">Welcome back.</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">Enter your personal beauty companion</p>
+</div>
+</div>
+<form class="flex flex-col w-full" id="auth-form">
+<div class="flex flex-col gap-space-md">
+<div class="relative w-full">
+<input class="peer w-full h-[54px] px-space-lg bg-surface-container-low text-on-surface font-body-md text-body-md rounded transition-all duration-200 outline-none placeholder-transparent focus:bg-surface-container-lowest shadow-sm" id="email-input" placeholder=" " required="" type="email"/>
+<label class="absolute left-space-lg top-1/2 -translate-y-1/2 font-body-md text-body-sm text-on-surface-variant pointer-events-none transition-all duration-200 origin-left peer-focus:-top-2 peer-focus:translate-y-0 peer-focus:text-label-sm peer-focus:font-label-sm peer-focus:text-primary peer-focus:bg-surface-container-lowest peer-focus:px-space-xs peer-focus:rounded-full peer-[:not(:placeholder-shown)]:-top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-label-sm peer-[:not(:placeholder-shown)]:font-label-sm peer-[:not(:placeholder-shown)]:text-on-surface-variant peer-[:not(:placeholder-shown)]:bg-surface-container-lowest peer-[:not(:placeholder-shown)]:px-space-xs peer-[:not(:placeholder-shown)]:rounded-full" for="email-input">
+            Email address
+          </label>
+</div>
+<div class="relative w-full">
+<input class="peer w-full h-[54px] pl-space-lg pr-12 bg-surface-container-low text-on-surface font-body-md text-body-md rounded transition-all duration-200 outline-none placeholder-transparent focus:bg-surface-container-lowest shadow-sm" id="password-input" placeholder=" " required="" type="password"/>
+<label class="absolute left-space-lg top-1/2 -translate-y-1/2 font-body-md text-body-sm text-on-surface-variant pointer-events-none transition-all duration-200 origin-left peer-focus:-top-2 peer-focus:translate-y-0 peer-focus:text-label-sm peer-focus:font-label-sm peer-focus:text-primary peer-focus:bg-surface-container-lowest peer-focus:px-space-xs peer-focus:rounded-full peer-[:not(:placeholder-shown)]:-top-2 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-label-sm peer-[:not(:placeholder-shown)]:font-label-sm peer-[:not(:placeholder-shown)]:text-on-surface-variant peer-[:not(:placeholder-shown)]:bg-surface-container-lowest peer-[:not(:placeholder-shown)]:px-space-xs peer-[:not(:placeholder-shown)]:rounded-full" for="password-input">
+            Password
+          </label>
+<button aria-label="Toggle password visibility" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors focus:outline-2 focus:outline-primary-container focus:outline-offset-2" id="toggle-password" type="button">
+<span class="material-symbols-outlined text-xl" id="eye-icon">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex justify-end mt-space-xs mb-space-lg">
+<a class="font-label-sm text-label-sm text-primary hover:text-primary-container tracking-wider uppercase transition-colors" href="#">
+          Forgot password?
+        </a>
+</div>
+<button class="w-full h-[54px] rounded-full bg-primary-container text-surface-container-lowest font-label-lg text-label-lg uppercase tracking-widest hover:bg-primary transition-all duration-200 shadow-sm flex items-center justify-center gap-space-xs group" type="submit">
+<span>Sign in</span>
+<span class="material-symbols-outlined text-lg transition-transform duration-200 group-hover:translate-x-0.5">arrow_forward</span>
+</button>
+</form>
+<div class="relative flex items-center justify-center my-space-lg">
+<div class="w-full h-px bg-surface-variant"></div>
+<span class="absolute px-space-md bg-surface-container-lowest font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">
+        Or continue with
+      </span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs mb-space-lg">
+<button aria-label="Continue with Google" class="h-11 rounded-full bg-surface-container-low hover:bg-surface-variant/70 text-on-surface flex items-center justify-center gap-1.5 transition-all duration-200 focus:outline-2 focus:outline-primary-container focus:outline-offset-2 shadow-sm" type="button">
+<svg aria-hidden="true" class="w-3.5 h-3.5 fill-primary-container" viewBox="0 0 24 24">
+<path d="M12.24 10.285V13.8h6.887C18.6 15.618 16.78 18 12.24 18c-3.315 0-6-2.685-6-6s2.685-6 6-6c1.68 0 2.94.66 3.6 1.29l2.76-2.655C16.89 2.955 14.775 2 12.24 2 6.585 2 2 6.585 2 12.24s4.585 10.24 10.24 10.24c5.91 0 9.84-4.155 9.84-10.02 0-.675-.075-1.185-.165-1.675H12.24z"></path>
+</svg>
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-on-surface">Google</span>
+</button>
+<button aria-label="Continue with Apple" class="h-11 rounded-full bg-surface-container-low hover:bg-surface-variant/70 text-on-surface flex items-center justify-center gap-1.5 transition-all duration-200 focus:outline-2 focus:outline-primary-container focus:outline-offset-2 shadow-sm" type="button">
+<svg aria-hidden="true" class="w-3.5 h-3.5 fill-primary-container" viewBox="0 0 24 24">
+<path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.6-1.12.89-2.02.77-2.37-.99.04-2.18.66-2.88 1.47-.56.65-.96 1.57-.84 2.37 1.1.08 2.24-.59 2.95-1.47z"></path>
+</svg>
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-on-surface">Apple</span>
+</button>
+<button aria-label="Continue with Facebook" class="h-11 rounded-full bg-surface-container-low hover:bg-surface-variant/70 text-on-surface flex items-center justify-center gap-1.5 transition-all duration-200 focus:outline-2 focus:outline-primary-container focus:outline-offset-2 shadow-sm" type="button">
+<svg aria-hidden="true" class="w-3.5 h-3.5 fill-primary-container" viewBox="0 0 24 24">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+</svg>
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-on-surface">Facebook</span>
+</button>
+</div>
+<div class="text-center pt-space-xs">
+<p class="font-body-md text-body-sm text-on-surface-variant">
+        New to Glamé?
+        <a class="text-primary hover:text-primary-container font-label-sm tracking-wider uppercase underline underline-offset-4 ml-1 transition-colors" href="signup.html">
+          Create account
+        </a>
+</p>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full py-space-xl flex flex-col sm:flex-row items-center justify-between px-margin-mobile md:px-margin-desktop text-on-surface-variant gap-space-sm"><div class="flex items-center gap-space-sm font-label-md text-label-md uppercase"><span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container inline-block"></span><span>© 2026 Glamé. All rights reserved.</span></div><div class="flex items-center gap-space-lg font-label-md text-label-md uppercase"><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" href="#">Terms</a><a class="hover:text-primary transition-colors" href="#">Contact</a></div></footer>
+<script src="assets/js/auth.js" defer=""></script>
+</body></html>
